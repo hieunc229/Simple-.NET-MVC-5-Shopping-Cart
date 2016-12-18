@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ElectricsOnlineWebApp.Models.OrderModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Orders</h2>
+@if (Model.Count() == 0)
+{
+    <br />
+    <div id="EmptyDataMsg" class="alert alert-info">
+        <strong>Welcome!</strong> Our shop is currently empty.
+    </div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                Order Date
+            </th>
+            <th>
+                Delivery Date
+            </th>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Total Payment
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @String.Format("{0:dd/MM/yyy}", item.OrderDate)
+            </td>
+            <td>
+                @String.Format("{0:dd/MM/yyy}", item.DeliveryDate)
+            </td>
+            <td>
+                @String.Format("{0} {1}", item.Customer.FName, item.Customer.LName)
+            </td>
+            <td>
+                @String.Format("{0:c}", item.TotalPayment)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.OrderID })
+            </td>
+        </tr>
+    }
+
+    </table>
+}

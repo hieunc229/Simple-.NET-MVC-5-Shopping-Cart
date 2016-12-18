@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ElectricsOnlineWebApp.Areas.Admin.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Products</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@if (Model.Count() == 0)
+{
+    <br />
+    <div id="EmptyDataMsg" class="alert alert-info">
+        <strong>Welcome!</strong> Our shop is currently empty.
+    </div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitsInStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supplier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ROL)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier.SName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ROL)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PID })
+            </td>
+        </tr>
+    }
+
+    </table>
+}

@@ -1,0 +1,225 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-theme {
+    background: #2dbb9b;
+    font-weight: bold;
+}
+.navbar-theme a {
+    color: #fff
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    background: rgba(255, 255, 255, .2);
+}
+.navbar-brand { font-size: 1.5em }
+
+/* Home page */
+.basket {
+    font-weight: bold;
+    font-size: .8em;
+    float: right;
+    padding: 20px;
+    background: none;
+    border: 1px solid #2dbb9b;
+    color: #2dbb9b;
+    letter-spacing: normal;
+    position: relative;
+}
+.basket:hover { background: #2dbb9b }
+.basket span {
+    margin-right: 5px;
+    margin-left: -20px;
+    padding: 20px;
+    text-transform: uppercase;
+} 
+.basket table {
+    position: absolute;
+    margin-top: 20px;
+    right: -1px;
+    display: none;
+    border: 1px solid #2dbb9b;
+    background: #fff;
+    color: #808080;
+    z-index: 3;
+    letter-spacing: normal;
+    text-transform: none;
+}
+.basket:hover table { display: table }
+.basket table tr { transition: .3s; -webkit-transition: .3s; padding: 20px }
+.basket table tr:hover { opacity: .5 }
+.basket table tr:last-child:hover {
+    opacity: 1
+}
+.basket table tr:last-child a {
+    padding: 10px 20px;
+    float: right;
+    color: #2dbb9b;
+    opacity: .7;
+    transition: .3s;
+    font-weight: bold;
+    letter-spacing: normal;
+    -webkit-transition: .3s;
+} .basket table tr:last-child a:hover { opacity: 1; background: #2dbb9b; color: #fff }
+.basket table td {
+    padding: 10px 20px;
+}
+
+/* Product page */
+.list-view {
+    display: flex;
+    flex-wrap: wrap
+}
+.list-item {
+    width: calc(100% / 3 - 34px);
+    margin: 20px 25px;
+    opacity: .8;
+    transition: .3s;
+    -webkit-transition: .3s;
+    padding: 20px;
+    border: 1px solid #2dbb9b;
+}
+.list-item:hover {
+    opacity: 1
+}
+.list-item:nth-child(3n+1) {
+    margin-left: 0;
+}
+.list-item:nth-child(3n) {
+    margin-right: 0
+}
+
+.list-item .p-cat {
+    color: #2dbb9b;
+    display: inline-block;
+    padding: 9px 0;
+    font-size: .8em;
+    font-weight: bold;
+}
+.list-item .p-brand {
+    color: #2dbb9b;
+    border: 1px solid #2dbb9b;
+    font-size: .8em;
+    font-weight: bold;
+    padding: 7px;
+    float: right;
+}
+.list-item .p-name {
+    display: block;
+    font-weight: bold;
+    margin: 5px 0;
+}
+.list-item .p-description {
+    /*font-size: 0.9em;*/
+    color: #808080;
+    margin-bottom: 10px;
+    display: block;
+}
+.list-item .add-to-cart {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-top: 10px;
+}
+
+
+.list-item .add-to-cart a {
+    border: 1px solid #2dbb9b;
+    padding: 10px;
+    font-weight: bold;
+    font-size: .8em;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #2dbb9b;
+}
+.list-item .add-to-cart a:hover {
+    color: #fff;
+    background: #2dbb9b;
+}
+.list-item .p-price {
+    color: #fff;
+    background: #2dbb9b;
+    font-weight: bold;
+    font-size: .9em;
+    padding: 10px;
+}
+.list-item .p-unit {
+    float: right;
+    font-weight: bold;
+    font-size: .8em;
+    vertical-align: bottom;
+}
+
+
+.suppliers .address {
+    font-weight: bold;
+    font-size: .9em;
+}
+.suppliers .phone, .suppliers .email {
+    width: 100%;
+}
+
+.cart-page {
+    width: 100%;
+    margin: 20px 0;
+    font-weight: bold;
+    color: #2f2f2f;
+}
+.cart-page th { transition: .3s; -webkit-transition: .3s }
+.cart-page th:hover {
+    background: rgba(45, 187, 155, 0.5);
+}
+.cart-page, .cart-page th, .cart-page td {
+    border: 1px solid #2dbb9b;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 10px;
+}
+.cart-page .quantity {
+    vertical-align: middle;
+    background: #2dbb9b;
+    color: #fff;
+    font-weight: bold;
+    width: 30px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 15px;
+    margin: 0 10px;
+}
+.cart-page .remove {
+    font-size: .7em;
+    text-transform: uppercase;
+    color: #ff6a00;
+    border: 1px solid #ff6a00;
+    padding: 3.5px 10px;
+    transition: .3s;
+    -webkit-transition: .3s;
+    border-radius: 15px;
+}
+.cart-page .remove:hover {
+    background: #ff6a00;
+    color: #fff;
+}
+

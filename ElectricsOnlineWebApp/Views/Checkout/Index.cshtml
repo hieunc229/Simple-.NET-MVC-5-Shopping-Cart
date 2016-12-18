@@ -1,0 +1,83 @@
+﻿@model ElectricsOnlineWebApp.ShoppingCartData
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    <script>
+        function UpdateTotalPrice() {
+            $.ajax({
+                type: 'GET',
+                url: "Checkout/UpdateTotal",
+                contentType: "application/json; charset=utf-8",
+                success: function (msg) {
+                    if (msg.d == "$0.00") {
+                        location.reload();
+                        return;
+                    }
+
+                    $('#totalPrice').text(msg.d);
+                }
+            })
+        }
+
+        function Change(el, type, pid) {
+            var data = {
+                'type': type,
+                'pId': pid
+            };
+            $.ajax({
+                type: 'POST',
+                url: "Checkout/QuanityChange",
+                data:"{ 'type': " + type +", 'pId': " + pid + "}",
+                contentType: "application/json; charset=utf-8",
+                success: function (msg) {
+                    if (msg.d == 0) {
+                        el.parentNode.parentNode.remove();
+                    } else {
+                        $(el).siblings('span')[0].innerHTML = msg.d
+                    }
+                    UpdateTotalPrice()
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    debugger;
+                }
+            });
+        }
+</script>
+}
+
+<h2>Shopping Cart</h2>
+
+@if (ViewBag.Cart.Count == 0)
+{
+    <br />
+    <div id="EmptyDataMsg" class="alert alert-info">
+        <strong>Welcome!</strong> Your shopping cart is currently empty. Let's start shopping
+    </div>
+}
+else
+{
+    <table class="cart-page">
+        @foreach (var item in ViewBag.Cart)
+        {
+            <tr>
+                <td><span class="p-name">@item.PName</span> </td>
+                <td><span class="p-name">@String.Format("{0:c}", item.UnitPrice)</span> </td>
+                <td>
+                    <a class="quantity" onclick="Change(this, 1, @item.PID)">+</a>
+                    <span class="p-name">@item.Quantity</span>
+                    <a class="quantity" onclick="Change(this, 0,  @item.PID)">-</a>
+                    <a class="remove" onclick="Change(this, -1,  @item.PID)">Remove</a>
+                </td>
+            </tr>
+        }
+        <tr><td>Total: </td><td id="totalPrice" colspan="2">@String.Format("{0:c}", ViewBag.CartTotalPrice)</td></tr>
+    </table>
+    <div class="button">
+        @Html.ActionLink("Clear Cart", "Clear", "Checkout", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Countinue", "Purchase","Checkout", null, new { @class = "btn btn-info" })
+    </div>
+}

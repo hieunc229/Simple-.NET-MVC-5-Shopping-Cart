@@ -1,0 +1,58 @@
+﻿@model ElectricsOnlineWebApp.Models.OrderModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Order Date
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/MM/yyy}", Model.OrderDate)
+        </dd>
+
+        <dt>
+            Estimate Delivery
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/MM/yyy}", Model.DeliveryDate)
+        </dd>
+
+        <dt>
+            Customer Name
+        </dt>
+
+        <dd>
+            @String.Format("{0} {1}", Model.Customer.FName, Model.Customer.LName) @Html.ActionLink("[Details]", "Details", "Customer", new { id = Model.CID }, null)
+        </dd>
+
+        <dt>
+            Total Payment
+        </dt>
+
+        <dd>
+            @String.Format("{0:c}", Model.TotalPayment)
+        </dd>
+    </dl>
+
+    <h4>Products</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @foreach (var p in Model.Order_Products)
+        {
+            <dt> @p.Product.PName</dt>
+            <dd> <b>@p.Qty</b> x @p.Product.UnitPrice</dd>
+        }
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index", "Order", null, new { @class = "btn btn-default" })
+</p>
