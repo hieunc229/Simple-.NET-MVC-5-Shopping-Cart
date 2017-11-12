@@ -1,13 +1,25 @@
 # Simple .NET MVC5 Shopping Cart
-This project was created as an example, not ready to be used
+An experimental online shopping cart project using C# .NET MVC5, MSSQL, HTML5, CSS3 and JavaScript
 
 ![alt tag](https://raw.githubusercontent.com/mrjcka/Simple-.NET-MVC-5-Shopping-Cart/master/demo.PNG)
 
-## Install
-Connect with database in LocalDB and run script 'Scripts.sql' (.net identity schema might need to be installed)
+## Installation
+
+As mentioned, this is a experimental project and is not ready for production. Please use on your own risk.
+
+**Required libraries**:
+
+- .NET Identity
+
+**Steps of installation**
+
+- Import project into Visual Studio (or alternative IDE)
+- Import and run SQL script attached name `Scripts.sql`. This will automatically generate database for the project.
 
 ## Features
-- Customer/Visiter: Displaying data such as Products, Orders, Suppliers
-- User can be registered as "Admin" (which never should)
-- Admin can have CRUD on Products and Suppliers, view Orders, view and delete Customer
-- Displaying Stock level using chartjs
+
+- Frontend pages - display Products, Orders, Suppliers for Customers and Visitor.
+- Authentication - a `Visitor` can become a `Customer`
+- Admin Page
+    - CRUD functions for Products and Suppliers, view Orders, view and delete Customer
+    - Displaying Stock level using chartjs
